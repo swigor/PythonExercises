@@ -7,11 +7,9 @@ for i in range(n+2):
     a[i][0] = a[i][n+1] = a[0][i] = a[n+1][i]= 1
 # filling
 x = y = 1
-count = 0
 dx = 1
 dy = 0
-while (count < n**2):
-    count += 1
+for count in range(1, n**2 + 1):
     a[x][y] = count
     if (a[x+dx][y+dy] > 0):
         if (dx == 1):

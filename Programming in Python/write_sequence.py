@@ -9,7 +9,7 @@ k = 0
 c = 0
 while True:
     k += 1
-    for i in range(k):
+    for _ in range(k):
         c += 1
         print(k, end=' ')
         if c == n:

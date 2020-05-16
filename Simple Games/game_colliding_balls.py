@@ -96,11 +96,7 @@ def create_list_of_balls(number):
                          random.choice(range(MAX_RADIUS, HEIGHT - MAX_RADIUS)),
                          random.choice(range(MIN_RADIUS, MAX_RADIUS)),
                          random.choice(COLORS))
-        is_collision = False
-        for ball in lst:
-            if next_ball.is_collision(ball):
-                is_collision = True
-                break
+        is_collision = any(next_ball.is_collision(ball) for ball in lst)
         if not is_collision:
             lst.append(next_ball)
             next_ball.draw()
@@ -109,11 +105,7 @@ def create_list_of_balls(number):
 
 # count the number of bad balls
 def count_bad_balls(list_of_balls):
-    result = 0
-    for ball in list_of_balls:
-        if ball.color == BAD_COLOR:
-            result += 1
-    return result
+    return sum(1 for ball in list_of_balls if ball.color == BAD_COLOR)
 
 
 # games main loop
